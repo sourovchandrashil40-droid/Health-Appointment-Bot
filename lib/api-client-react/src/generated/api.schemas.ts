@@ -8,3 +8,85 @@
 export interface HealthStatus {
   status: string;
 }
+
+export interface OpenaiConversation {
+  id: number;
+  title: string;
+  createdAt: string;
+}
+
+export interface OpenaiMessage {
+  id: number;
+  conversationId: number;
+  role: string;
+  content: string;
+  createdAt: string;
+}
+
+export interface CreateOpenaiConversationBody {
+  title: string;
+}
+
+export interface SendOpenaiMessageBody {
+  content: string;
+}
+
+export interface OpenaiConversationWithMessages {
+  id: number;
+  title: string;
+  createdAt: string;
+  messages: OpenaiMessage[];
+}
+
+export interface OpenaiError {
+  error: string;
+}
+
+export interface Doctor {
+  id: number;
+  name: string;
+  specialty: string;
+  hospital: string;
+  city: string;
+  qualification: string;
+  experience: number;
+  rating: number;
+  consultationFee: number;
+  phone: string;
+}
+
+export interface TimeSlot {
+  id: number;
+  doctorId: number;
+  date: string;
+  time: string;
+  available: boolean;
+}
+
+export interface Appointment {
+  id: number;
+  doctorId: number;
+  patientName: string;
+  patientPhone: string;
+  date: string;
+  time: string;
+  city: string;
+  specialty: string;
+  status: string;
+  doctorName: string;
+  hospitalName: string;
+  createdAt: string;
+}
+
+export interface CreateAppointmentBody {
+  doctorId: number;
+  patientName: string;
+  patientPhone: string;
+  date: string;
+  time: string;
+}
+
+export type ListDoctorsParams = {
+  city?: string;
+  specialty?: string;
+};

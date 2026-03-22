@@ -14,3 +14,150 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * @summary List all conversations
+ */
+export const ListOpenaiConversationsResponseItem = zod.object({
+  id: zod.number(),
+  title: zod.string(),
+  createdAt: zod.date(),
+});
+export const ListOpenaiConversationsResponse = zod.array(
+  ListOpenaiConversationsResponseItem,
+);
+
+/**
+ * @summary Create a new conversation
+ */
+export const CreateOpenaiConversationBody = zod.object({
+  title: zod.string(),
+});
+
+/**
+ * @summary Get conversation with messages
+ */
+export const GetOpenaiConversationParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const GetOpenaiConversationResponse = zod.object({
+  id: zod.number(),
+  title: zod.string(),
+  createdAt: zod.date(),
+  messages: zod.array(
+    zod.object({
+      id: zod.number(),
+      conversationId: zod.number(),
+      role: zod.string(),
+      content: zod.string(),
+      createdAt: zod.date(),
+    }),
+  ),
+});
+
+/**
+ * @summary Delete a conversation
+ */
+export const DeleteOpenaiConversationParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+/**
+ * @summary List messages in a conversation
+ */
+export const ListOpenaiMessagesParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const ListOpenaiMessagesResponseItem = zod.object({
+  id: zod.number(),
+  conversationId: zod.number(),
+  role: zod.string(),
+  content: zod.string(),
+  createdAt: zod.date(),
+});
+export const ListOpenaiMessagesResponse = zod.array(
+  ListOpenaiMessagesResponseItem,
+);
+
+/**
+ * @summary Send a text message and receive a streaming text response
+ */
+export const SendOpenaiMessageParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const SendOpenaiMessageBody = zod.object({
+  content: zod.string(),
+});
+
+/**
+ * @summary List doctors with optional filters
+ */
+export const ListDoctorsQueryParams = zod.object({
+  city: zod.coerce.string().optional(),
+  specialty: zod.coerce.string().optional(),
+});
+
+export const ListDoctorsResponseItem = zod.object({
+  id: zod.number(),
+  name: zod.string(),
+  specialty: zod.string(),
+  hospital: zod.string(),
+  city: zod.string(),
+  qualification: zod.string(),
+  experience: zod.number(),
+  rating: zod.number(),
+  consultationFee: zod.number(),
+  phone: zod.string(),
+});
+export const ListDoctorsResponse = zod.array(ListDoctorsResponseItem);
+
+/**
+ * @summary Get doctor availability slots
+ */
+export const GetDoctorAvailabilityParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const GetDoctorAvailabilityResponseItem = zod.object({
+  id: zod.number(),
+  doctorId: zod.number(),
+  date: zod.string(),
+  time: zod.string(),
+  available: zod.boolean(),
+});
+export const GetDoctorAvailabilityResponse = zod.array(
+  GetDoctorAvailabilityResponseItem,
+);
+
+/**
+ * @summary List all appointments
+ */
+export const ListAppointmentsResponseItem = zod.object({
+  id: zod.number(),
+  doctorId: zod.number(),
+  patientName: zod.string(),
+  patientPhone: zod.string(),
+  date: zod.string(),
+  time: zod.string(),
+  city: zod.string(),
+  specialty: zod.string(),
+  status: zod.string(),
+  doctorName: zod.string(),
+  hospitalName: zod.string(),
+  createdAt: zod.date(),
+});
+export const ListAppointmentsResponse = zod.array(ListAppointmentsResponseItem);
+
+/**
+ * @summary Book an appointment
+ */
+export const CreateAppointmentBody = zod.object({
+  doctorId: zod.number(),
+  patientName: zod.string(),
+  patientPhone: zod.string(),
+  date: zod.string(),
+  time: zod.string(),
+});

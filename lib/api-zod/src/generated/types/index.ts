@@ -6,4 +6,15 @@
  * OpenAPI spec version: 0.1.0
  */
 
+export * from "./appointment";
+export * from "./createAppointmentBody";
+export * from "./createOpenaiConversationBody";
+export * from "./doctor";
 export * from "./healthStatus";
+export * from "./listDoctorsParams";
+export * from "./openaiConversation";
+export * from "./openaiConversationWithMessages";
+export * from "./openaiError";
+export * from "./openaiMessage";
+export * from "./sendOpenaiMessageBody";
+export * from "./timeSlot";

@@ -1,0 +1,18 @@
+packages:
+  "framer-motion": "For smooth entering animations of chat messages and doctor cards"
+  "date-fns": "For elegant date formatting in the appointment picker"
+  "clsx": "Utility for conditionally joining classNames"
+  "tailwind-merge": "Utility for merging tailwind classes without conflicts"
+  "lucide-react": "Beautiful, consistent iconography for the medical UI"
+
+images:
+  - path: "artifacts/medbot/public/images/medbot-logo.png"
+    description: "A modern, minimalist abstract logo for a medical AI assistant. Features a clean bright cyan and deep blue stethoscope intertwined with a subtle chat bubble or spark. Pure white background, high resolution, vector-style."
+    aspect_ratio: "1:1"
+  - path: "artifacts/medbot/public/images/empty-appointments.png"
+    description: "A soft, 3D clay-style illustration of a medical calendar with a stethoscope resting on it. Pastel cyan, teal, and white color palette. Clean, professional, and friendly."
+    aspect_ratio: "1:1"
+
+notes:
+  - "The app uses SSE for chat streaming (fetch + ReadableStream) to communicate with the OpenAI backend."
+  - "The layout is divided into a conversational AI interface and an actionable doctor/appointment panel."
